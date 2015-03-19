@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Status</th>
+      <th>Workload</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_units.each do |work_unit| %>
+      <tr>
+        <td><%= work_unit.job_id %></td>
+        <td><%= work_unit.status %></td>
+        <td><%= work_unit.work_result %></td>
+        <td><%= link_to 'Show', work_unit %></td>
+        <td><%= link_to 'Destroy', work_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

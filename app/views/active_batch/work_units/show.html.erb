@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @work_unit.job_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @work_unit.status %>
+</p>
+
+<p>
+  <strong>Workload:</strong>
+  <%= @work_unit.work_result %>
+</p>
+
+<%= link_to 'Back', work_units_path %>
