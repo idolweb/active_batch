@@ -8,8 +8,10 @@ module ActiveBatch
     belongs_to :batch, foreign_key: 'active_batch_batches_id'
 
     def error(exception)
-      self.status = 'error'
-      self.work_result = "#{exception.message}\n#{exception.backtrack.join("\n")}"
+      self.update!(
+          status: :failed,
+          work_result: "#{exception.message}\n#{exception.backtrace.join("\n")}"
+      )
     end
   end
 end
