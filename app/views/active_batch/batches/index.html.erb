@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Job class</th>
+      <th>Created at</th>
+      <th>Status</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
     <% @batches.each do |batch| %>
       <tr>
         <td><%= batch.job_class %></td>
+        <td><%= batch.created_at %></td>
+        <td><%= batch.status %></td>
         <td><%= link_to 'Show', batch %></td>
         <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

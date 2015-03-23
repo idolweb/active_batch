@@ -5,4 +5,27 @@
   <%= @batch.job_class %>
 </p>
 
+<p>
+  <strong>Status</strong>
+  <%= @batch.status %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>job_id</th>
+      <th>status</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @batch.work_units.each do |work_unit| %>
+    <tr>
+      <td><%= work_unit.job_id %></td>
+      <td><%= work_unit.status %></td>
+      <td><%= work_unit.work_result %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
 <%= link_to 'Back', batches_path %>

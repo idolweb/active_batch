@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319102215) do
+ActiveRecord::Schema.define(version: 20150319101734) do
 
   create_table "active_batch_batches", force: :cascade do |t|
     t.string   "job_class"
     t.string   "job_id"
     t.string   "arguments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "active_batch_work_units", force: :cascade do |t|

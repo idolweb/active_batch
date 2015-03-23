@@ -12,6 +12,12 @@ module ActiveBatch
       work_unit_in_batch(self).update!(work_result: result.to_s)
     end
 
+    class_methods do
+      def perform_batch(*args)
+        BatchSchedulerJob.perform_later(self.name, *args)
+      end
+    end
+
     included do
       rescue_from(StandardError) do |exception|
         work_unit_in_batch(self).error(exception)
@@ -19,11 +25,11 @@ module ActiveBatch
       end
 
       before_perform do |job|
-        work_unit_in_batch(job).status = 'running'
+        work_unit_in_batch(job).update!(status: :running)
       end
 
       after_perform do |job|
-        work_unit_in_batch(job).status = 'done'
+        work_unit_in_batch(job).update!(status: :done)
       end
     end
   end

@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = ActiveBatch::VERSION
   s.authors     = ["adrien"]
   s.email       = ["adrien.montfort@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ActiveBatch."
-  s.description = "TODO: Description of ActiveBatch."
+  s.homepage    = "https://github.com/idolweb/active_batch"
+  s.summary     = "Batch of ActiveJobs"
+  s.description = "Allows handling batch of ActiveJobs"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
