@@ -7,6 +7,7 @@ ActiveRecord::Migrator.migrations_paths << File.expand_path('../../db/migrate', 
 require "rails/test_help"
 require "jobs/batch_job"
 require "jobs/rescue_job"
+require 'acts_as_fu'
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.
@@ -22,4 +23,5 @@ end
 
 class ActiveSupport::TestCase
   include ActiveJob::TestHelper
+  include ActsAsFu
 end

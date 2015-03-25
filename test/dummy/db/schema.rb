@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150319101734) do
     t.string   "job_id"
     t.integer  "status",                  default: 0
     t.string   "work_result"
+    t.string   "arguments"
     t.integer  "active_batch_batches_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

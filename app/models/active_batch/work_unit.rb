@@ -1,5 +1,6 @@
 module ActiveBatch
   class WorkUnit < ActiveRecord::Base
+    include WithActiveJobArguments
 
     enum status: [:enqueued, :running, :done, :failed]
 

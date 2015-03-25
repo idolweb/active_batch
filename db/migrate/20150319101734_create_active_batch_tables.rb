@@ -13,6 +13,7 @@ class CreateActiveBatchTables < ActiveRecord::Migration
       t.string :job_id
       t.integer :status, default: 0
       t.string :work_result
+      t.string :arguments
       t.references :active_batch_batches
 
       t.timestamps null: false
