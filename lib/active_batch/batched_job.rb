@@ -14,7 +14,7 @@ module ActiveBatch
 
     class_methods do
       def perform_batch(*args)
-        BatchSchedulerJob.perform_later(self.name, *args)
+        BatchSchedulerJob.perform_later(self, *args)
       end
     end
 

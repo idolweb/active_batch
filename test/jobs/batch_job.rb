@@ -10,7 +10,7 @@ class BatchJob < ActiveJob::Base
   end
 
   def self.after_batch(args, results)
-    File.open('/tmp/batch_job_arguments', 'w') { |f| f << args.first }
+    File.open('/tmp/batch_job_arguments', 'w') { |f| f << args }
     File.open('/tmp/batch_job_result', 'w') { |f| f << results }
   end
 

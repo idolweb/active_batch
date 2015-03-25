@@ -3,7 +3,7 @@ module ActiveBatch
 
     enum status: [:enqueued, :running, :done, :failed]
 
-    scope :not_done, -> { where.not(status: statuses[:done])}
+    scope :not_done, -> { where.not(status: statuses[:done]) }
 
     belongs_to :batch, foreign_key: 'active_batch_batches_id'
 

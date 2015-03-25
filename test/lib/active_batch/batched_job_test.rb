@@ -17,5 +17,10 @@ module ActiveBatch
       assert @work_unit.reload.failed?
     end
 
+    test 'can perform batch' do
+      assert_enqueued_with(job: BatchSchedulerJob, args: [BatchJob, 1, 2]) do
+        BatchJob.perform_batch(1, 2)
+      end
+    end
   end
 end

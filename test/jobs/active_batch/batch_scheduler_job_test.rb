@@ -2,7 +2,6 @@ require 'test_helper'
 
 module ActiveBatch
   class BatchSchedulerJobTest < ActiveJob::TestCase
-    include ActiveJob::TestHelper
 
     setup do
       @batch_job = 'BatchJob'
@@ -36,6 +35,12 @@ module ActiveBatch
       job = BatchSchedulerJob.perform_now(@batch_job, @test_string)
       batch = Batch.find_by(job_id: job.job_id)
       assert_equal @test_string.length, batch.work_units.enqueued.count
+    end
+
+    test 'uses same queue than the Batch Job' do
+      assert_enqueued_with(job: BatchSchedulerJob, queue: BatchJob.new.queue_name) do
+        BatchSchedulerJob.perform_later(BatchJob)
+      end
     end
   end
 end
