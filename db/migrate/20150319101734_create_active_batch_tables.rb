@@ -11,10 +11,10 @@ class CreateActiveBatchTables < ActiveRecord::Migration
 
     create_table :active_batch_work_units do |t|
       t.string :job_id
-      t.integer :status, default: 0
+      t.integer :status, default: 0, index: true
       t.string :work_result
       t.string :arguments
-      t.references :active_batch_batches
+      t.references :active_batch_batches, index: true
 
       t.timestamps null: false
     end
