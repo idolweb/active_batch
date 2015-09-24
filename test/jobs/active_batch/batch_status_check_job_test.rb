@@ -41,10 +41,10 @@ module ActiveBatch
       @work_unit_running.update!(status: :done)
       BatchStatusCheckJob.perform_now(@batch)
 
-      assert File.exists?('/tmp/batch_job_result')
+      assert File.exists?('/tmp/batch_job_results')
       assert File.exists?('/tmp/batch_job_arguments')
       assert_equal @batch.arguments.first, IO.read('/tmp/batch_job_arguments')
-      assert_equal [@first_result, @second_result].to_s, IO.read('/tmp/batch_job_result')
+      assert_equal [@first_result, @second_result].to_s, IO.read('/tmp/batch_job_results')
     end
 
   end
