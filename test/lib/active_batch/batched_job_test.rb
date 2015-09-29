@@ -20,7 +20,7 @@ module ActiveBatch
     end
 
     test 'can perform batch' do
-      assert_enqueued_with(job: BatchSchedulerJob, args: [BatchJob, 1, 2]) do
+      assert_enqueued_with(job: BatchSchedulerJob, args: [BatchJob.name, 1, 2]) do
         BatchJob.perform_batch(1, 2)
       end
     end

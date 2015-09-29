@@ -39,7 +39,7 @@ module ActiveBatch
 
     test 'uses same queue than the Batch Job' do
       assert_enqueued_with(job: BatchSchedulerJob, queue: BatchJob.new.queue_name) do
-        BatchSchedulerJob.perform_later(BatchJob)
+        BatchSchedulerJob.perform_later(BatchJob.name)
       end
     end
   end
