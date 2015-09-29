@@ -9,7 +9,11 @@ module ActiveBatch
     end
 
     def save_result(result)
-      work_unit_in_batch(self).update!(work_result: result.to_s) if in_batch
+      work_unit_in_batch(self).update!(work_result: result.to_s) if in_batch?
+    end
+
+    def in_batch?
+      work_unit_in_batch(self)
     end
 
     class_methods do
@@ -20,19 +24,17 @@ module ActiveBatch
 
     included do
 
-      attr_accessor :in_batch
-
       rescue_from(StandardError) do |exception|
-        work_unit_in_batch(self).error(exception) if in_batch
+        work_unit_in_batch(self).error(exception) if in_batch?
         raise exception
       end
 
       before_perform do |job|
-        work_unit_in_batch(job).update!(status: :running) if job.in_batch
+        work_unit_in_batch(job).update!(status: :running) if job.in_batch?
       end
 
       after_perform do |job|
-        work_unit_in_batch(job).update!(status: :done)  if job.in_batch
+        work_unit_in_batch(job).update!(status: :done)  if job.in_batch?
       end
     end
   end
